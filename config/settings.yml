@@ -1,0 +1,9 @@
+app_name: "Rails Tutorial App"
+admin_email: "hoangvip3333@gmail.com"
+default_locale: "en"
+
+i18n:
+  default_locale: :en
+  available_locales:
+    - :en
+    - :vi
