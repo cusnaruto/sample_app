@@ -1,0 +1,13 @@
+<div class="welcome-container">
+  <h1>Welcome, <%= @user.name %>!</h1>
+  <p>Your account has been successfully created.</p>
+
+  <div class="user-details">
+    <p><strong>Email:</strong> <%= @user.email %></p>
+    <p><strong>Date of Birth:</strong> <%= @user.dob.strftime('%B %d, %Y') %></p>
+  </div>
+
+  <div class="navigation">
+    <a href="/" class="btn btn-primary">Go to Homepage</a>
+  </div>
+</div>

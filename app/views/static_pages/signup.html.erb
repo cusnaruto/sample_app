@@ -1,0 +1,34 @@
+<div class="signup-container">
+  <h1><%= t('.signup_title', default: 'Sign Up') %></h1>
+
+  <%= form_with(url: static_pages_create_path, local: true, class: "signup-form") do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field 'user[name]', class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field 'user[email]', class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :dob %>
+      <%= f.date_field 'user[dob]', class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field 'user[password]', class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, "Confirm Password" %>
+      <%= f.password_field 'user[password_confirmation]', class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Create Account", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
