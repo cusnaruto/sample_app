@@ -1,0 +1,21 @@
+vi:
+  users:
+    new:
+      signup_title: "Đăng ký"
+      create_account: "Tạo tài khoản"
+      select_gender: "Chọn giới tính"
+      errors_prohibited: "%{count} lỗi đã ngăn người dùng này được lưu:"
+      error_explanation: "Lỗi"
+      genders:
+        male: "Nam"
+        female: "Nữ"
+        other: "Khác"
+    show:
+      email: "Email"
+      date_of_birth: "Ngày sinh"
+      gender: "Giới tính"
+      account_created: "Tài khoản được tạo"
+      last_updated: "Cập nhật lần cuối"
+      user_not_found: "Không tìm thấy người dùng"
+    create:
+      welcome: "Chào mừng bạn đến với Ứng dụng Mẫu!"

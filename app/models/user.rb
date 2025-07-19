@@ -2,6 +2,8 @@ class User < ApplicationRecord
   PASSWORD_MAXIMUM_LENGTH = 255
   AGE_MAXIMUM = 100.years
 
+  enum gender: {male: 0, female: 1, other: 2}
+
   has_secure_password
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -10,6 +12,7 @@ class User < ApplicationRecord
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
   validates :dob, presence: true
+  validates :gender, presence: true
 
   validate :dob_valid
 

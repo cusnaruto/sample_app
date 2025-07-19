@@ -16,3 +16,21 @@ en:
       content: "Contact | Ruby on Rails Sample Page"
       english: "English"
       vietnamese: "Vietnamese"
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user:
+        name: "Name"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        dob: "Date of birth"
+        gender: "Gender"
+    errors:
+      models:
+        user:
+          attributes:
+            dob:
+              future_date: "can't be in the future"
+              too_old: "can't be more than %{max_years} years ago"
