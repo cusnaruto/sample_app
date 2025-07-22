@@ -391,10 +391,16 @@ Style/SingleLineMethods:
   AllowIfMethodIsEmpty: true
 
 Style/StringLiterals:
+  Enabled: true
   EnforcedStyle: double_quotes
+  ConsistentQuotesInMultiline: true
   SupportedStyles:
     - single_quotes
     - double_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: double_quotes
 
 Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: space

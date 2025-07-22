@@ -1,0 +1,18 @@
+vi:
+  users:
+    new:
+      signup_title: "Đăng ký"
+      name: "Họ và tên"
+      email: "Email"
+      dob: "Ngày sinh"
+      password: "Mật khẩu"
+      password_confirmation: "Xác nhận mật khẩu"
+      create_account: "Tạo tài khoản"
+    show:
+      welcome: "Chào mừng, %{name}!"
+      account_created: "Tài khoản của bạn đã được tạo thành công!"
+      email: "Email"
+      dob: "Ngày sinh"
+      user_not_found: "Không tìm thấy người dùng"
+    create:
+      welcome: "Chào mừng đến với Sample App!"

@@ -1,0 +1,22 @@
+vi:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "không được để trống"
+            email:
+              blank: "không được để trống"
+              invalid: "không hợp lệ"
+              too_long: "quá dài"
+              uniqueness: "đã được sử dụng"
+            password:
+              blank: "không được để trống"
+              confirmation: "không khớp"
+            password_confirmation:
+              blank: "không được để trống"
+            dob:
+              blank: "không được để trống"
+              future_date: "không thể để ở tương lai"
+              too_old: "người dùng không thể vượt quá 100 tuổi"
