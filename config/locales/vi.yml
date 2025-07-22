@@ -1,0 +1,18 @@
+vi:
+  language: "Ngôn ngữ"
+  layouts:
+    header:
+      home: "Trang chủ"
+      contact: "Liên hệ"
+      english: "Tiếng Anh"
+      vietnamese: "Tiếng Việt"
+  contact:
+    title: "Liên hệ | Ruby on Rails App mẫu hướng dẫn"
+
+  static_pages:
+    contact:
+      title: "Liên hệ"
+      hello: "Xin chào"
+      content: "Liên hệ | Ruby on Rails App mẫu hướng dẫn"
+      english: "Tiếng Anh"
+      vietnamese: "Tiếng Việt"
