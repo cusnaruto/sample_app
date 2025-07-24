@@ -1,21 +1,35 @@
 vi:
   users:
-    new:
-      signup_title: "Đăng ký"
-      create_account: "Tạo tài khoản"
+    genders:
+      male: "Nam"
+      female: "Nữ"
+      other: "Khác"
+    form:
+      name: "Tên"
+      name_placeholder: "Nhập tên của bạn"
+      email: "Email"
+      email_placeholder: "Nhập email của bạn"
+      date_of_birth: "Ngày sinh"
+      select_date: "Chọn ngày"
+      gender: "Giới tính"
       select_gender: "Chọn giới tính"
-      errors_prohibited: "%{count} lỗi đã ngăn người dùng này được lưu:"
-      error_explanation: "Lỗi"
-      genders:
-        male: "Nam"
-        female: "Nữ"
-        other: "Khác"
+      password: "Mật khẩu"
+      password_placeholder: "Nhập mật khẩu"
+      password_confirmation: "Xác nhận mật khẩu"
+      password_confirmation_placeholder: "Xác nhận mật khẩu của bạn"
+      submit: "Cập nhật hồ sơ"
+    edit:
+      title: "Chỉnh sửa hồ sơ"
+      cancel: "Hủy"
+    update:
+      success: "Hồ sơ đã được cập nhật thành công"
+    not_found: "Không tìm thấy người dùng"
+    login_required: "Vui lòng đăng nhập"
+    not_correct: "Bạn không có quyền truy cập"
+    destroy:
+      success: "Người dùng đã được xóa thành công"
+      fail: "Không thể xóa người dùng"
+  sessions:
     show:
       email: "Email"
-      date_of_birth: "Ngày sinh"
-      gender: "Giới tính"
-      account_created: "Tài khoản được tạo"
-      last_updated: "Cập nhật lần cuối"
-      user_not_found: "Không tìm thấy người dùng"
-    create:
-      welcome: "Chào mừng bạn đến với Ứng dụng Mẫu!"
+      date_of_birth:

@@ -1,49 +1,53 @@
 class SessionsController < ApplicationController
-  REMEMBER_ME_CONST = "1"
+  REMEMBER_ME = "1".freeze
+  def show
+    @user = User.find_by(id: params[:id])
+    return if @user
 
-  before_action :load_user, only: :show
-  before_action :find_user_by_email, only: :create
-  before_action :authenticate_user, only: :create
-
-  def show; end
-
-  def new; end
+    redirect_to root_path, alert: t("sessions.show.user_not_found")
+  end
 
   def create
-    handle_successful_authentication(@user)
+    user = find_user_by_email
+    if user&.authenticate(session_password)
+      if user.activated?
+        handle_successful_login(user)
+      else
+        flash[:warning] = t("sessions.create.account_not_activated")
+        redirect_to root_url, status: :see_other
+      end
+    else
+      handle_failed_login
+    end
   end
 
   private
 
   def find_user_by_email
-    @user = User.find_by(email: params.dig(:session, :email)&.downcase)
-    return if @user
-
-    flash.now[:danger] = t("sessions.create.user_not_found")
-    render :new, status: :unprocessable_entity
+    User.find_by(email: params.dig(:session, :email)&.downcase)
   end
 
-  def authenticate_user
-    return if @user&.authenticate(params.dig(:session, :password))
-
-    handle_failed_authentication
+  def session_password
+    params.dig(:session, :password)
   end
 
-  def handle_successful_authentication(user)
+  def handle_successful_login user
+    forwarding_url = session[:forwarding_url]
     log_in user
-    params.dig(:session, :remember_me) == REMEMBER_ME_CONST ? remember(user) : forget(user)
-    redirect_to session_path(user), status: :see_other
+    handle_remember_me(user)
+    redirect_to forwarding_url || user
   end
 
-  def handle_failed_authentication
+  def handle_remember_me user
+    if params.dig(:session, :remember_me) == REMEMBER_ME
+      remember(user)
+    else
+      forget(user)
+    end
+  end
+
+  def handle_failed_login
     flash.now[:danger] = t("sessions.create.invalid_email_or_password")
     render :new, status: :unprocessable_entity
-  end
-
-  def load_user
-    @user = User.find_by(id: params[:id])
-    return if @user
-
-    redirect_to root_path, alert: t("sessions.show.user_not_found")
   end
 end

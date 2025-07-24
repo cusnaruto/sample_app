@@ -1,55 +1,11 @@
-<div class="signup-container">
-  <h1><%= t(".signup_title") %></h1>
-
-  <%= form_for @user, url: users_path, html: {class: "signup-form"} do |f| %>
-    <% if @user.errors.any? %>
-      <div id="error_explanation" class="alert alert-danger">
-        <h2>
-          <%= t(".errors_prohibited", count: @user.errors.count) %>
-        </h2>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "form-control", required: true %>
+<% provide(:title, t(".title")) %>
+<h1><%= t(".title") %></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render "form" %>
+    <div class="gravatar_edit">
+      <%= gravatar_for @user %>
+      <%= link_to t(".change"), Settings.page.users.edit.avatar_path, target: "_blank" %>
     </div>
-
-    <div class="form-group">
-      <%= f.label :email, t(".email") %>
-      <%= f.email_field :email, class: "form-control", required: true %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :dob, t(".dob") %>
-      <%= f.date_field :dob, class: "form-control", required: true %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :gender %>
-      <%= f.select :gender,
-                  options_for_select(gender_options, @user.gender),
-                  { include_blank: t(".select_gender") },
-                  { class: "form-control", required: true } %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password, t(".password") %>
-      <%= f.password_field :password, class: "form-control", required: true %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password_confirmation, t(".password_confirmation") %>
-      <%= f.password_field :password_confirmation, class: "form-control", required: true %>
-    </div>
-
-    <div class="form-group">
-      <%= f.submit t(".create_account"), class: "btn btn-primary" %>
-    </div>
-  <% end %>
+  </div>
 </div>
