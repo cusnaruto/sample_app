@@ -1,0 +1,9 @@
+<div class="welcome-container">
+  <h1><%= t(".welcome", name: @user.name) %></h1>
+  <p><%= t(".account_created") %></p>
+
+  <div class="user-details">
+    <p><strong><%= t(".email") %>:</strong> <%= @user.email %></p>
+    <p><strong><%= t(".dob") %>:</strong> <%= @user.dob&.strftime(Settings.time.formats.date_of_birth) %></p>
+  </div>
+</div>

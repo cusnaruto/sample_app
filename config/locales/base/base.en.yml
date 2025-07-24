@@ -7,12 +7,12 @@ en:
       english: "English"
       vietnamese: "Vietnamese"
   contact:
-    title: "Contact | Ruby on Rails Tutorial Sample App"
+    title: "Contact | Ruby on Rails Sample Page"
 
   static_pages:
     contact:
       title: "Contact"
       hello: "Hello"
-      content: "Contact | Ruby on Rails Tutorial Sample App"
+      content: "Contact | Ruby on Rails Sample Page"
       english: "English"
       vietnamese: "Vietnamese"

@@ -1,4 +1,4 @@
-development:
+defaults: &defaults
   app_name: "Rails Tutorial App"
   admin_email: "hoangvip3333@gmail.com"
   default_locale: "en"
@@ -10,3 +10,12 @@ development:
     available_locales:
       - :en
       - :vi
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

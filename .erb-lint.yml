@@ -1,0 +1,7 @@
+linters:
+  QuotesInHTML:
+    enabled: true
+    enforced_style: double_quotes
+  QuotesInTag:
+    enabled: true
+    enforced_style: double_quotes

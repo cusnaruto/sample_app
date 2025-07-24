@@ -1,0 +1,18 @@
+en:
+  users:
+    new:
+      signup_title: "Signup"
+      name: "Name"
+      email: "Email"
+      dob: "Date of birth"
+      password: "Password"
+      password_confirmation: "Confirm password"
+      create_account: "Create account"
+    show:
+      welcome: "Welcome, %{name}!"
+      account_created: "Account successfully created!"
+      email: "Email"
+      dob: "Date of birth"
+      user_not_found: "User not found"
+    create:
+      welcome: "Welcome to Sample App!"
