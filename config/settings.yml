@@ -1,12 +1,14 @@
-development:
-  app_name: "Rails Tutorial App"
-  admin_email: "hoangvip3333@gmail.com"
-  default_locale: "en"
-  time:
-    formats:
-      date_of_birth: "%B %d, %Y"
-  i18n:
-    default_locale: :en
-    available_locales:
-      - :en
-      - :vi
+app_name: "Rails Tutorial App"
+admin_email: "hoangvip3333@gmail.com"
+default_locale: "en"
+
+i18n:
+  default_locale: :en
+  available_locales:
+    - :en
+    - :vi
+
+digits:
+  digit_6: 6
+
+page_10: 10

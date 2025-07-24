@@ -1,6 +1,19 @@
-<div class="welcome-container">
-  <p><%= t("sessions.show.account_created") %></p>
-  <div class="user-details">
-    <p><strong><%= t("sessions.show.email") %>:</strong> <%= @user.email %></p>
-  </div>
+<% provide :title, @user.name %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user-info">
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </section>
+    <section class="user-details">
+      <p><strong><%= t(".email") %>:</strong> <%= @user.email %></p>
+      <% if @user.dob.present? %>
+        <p><strong><%= t(".date_of_birth") %>:</strong> <%= l(@user.dob, format: :long) %></p>
+      <% end %>
+      <% if @user.gender.present? %>
+        <p><strong><%= t(".gender") %>:</strong> <%= t("users.genders.#{@user.gender}") %></p>
+      <% end %>
+    </section>
+  </aside>
 </div>
