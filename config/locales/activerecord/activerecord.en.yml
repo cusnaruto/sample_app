@@ -19,4 +19,4 @@ en:
             dob:
               blank: "can't be blank"
               future_date: "can't be in the future"
-              too_old: "user cannot be older than 100 years"
+              too_old: "user cannot be older than 100 years!"
