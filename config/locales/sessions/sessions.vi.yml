@@ -1,0 +1,12 @@
+vi:
+  sessions:
+    new:
+      log_in: "Đăng nhập"
+      email: "Email"
+      password: "Mật khẩu"
+      sign_up: "Đăng ký"
+    show:
+      account_created: "Tạo tài khoản thành công"
+      email: "Email"
+    create:
+      invalid_email_or_password: "Invalid email or password."

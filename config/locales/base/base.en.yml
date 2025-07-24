@@ -2,8 +2,15 @@ en:
   language: "Language"
   layouts:
     header:
+      sample_app: "Sample App"
       home: "Home"
       contact: "Contact"
+      users: "Users"
+      account: "Account"
+      profile: "Profile"
+      settings: "Settings"
+      logout: "Log out"
+      login: "Log in"
       english: "English"
       vietnamese: "Vietnamese"
   contact:
