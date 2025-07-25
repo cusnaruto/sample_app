@@ -1,6 +1,6 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Sample App", root_path, id: "logo" %>
+    <%= link_to t("layouts.header.sample_app"), root_path, id: "logo" %>
     <nav>
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
@@ -11,18 +11,31 @@
       </div>
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to t(".home"), root_path %></li>
-          <li><%= link_to t(".contact"), contact_path %></li>
-
+          <li><%= link_to t("layouts.header.home"), root_path %></li>
+          <li><%= link_to t("layouts.header.contact"), contact_path %></li>
+          <% if logged_in? %>
+            <li><%= link_to t("layouts.header.users"), "#" %></li>
+            <li>
+              <%= link_to t("layouts.header.profile"), session_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to t("layouts.header.settings"), "#" %>
+            </li>
+            <li>
+              <%= button_to t("layouts.header.logout"), logout_path, method: :delete, class: "btn btn-link navbar-btn" %>
+            </li>
+          <% else %>
+            <li><%= link_to t("layouts.header.login"), login_path %></li>
+          <% end %>
           <!-- Language switcher -->
-          <li class="<%= I18n.locale == :en ? 'active' : '' %>">
+          <li class="<%= I18n.locale == :en ? "active" : "" %>">
             <%= link_to locale: "en" do %>
-              <i class="fa fa-flag"></i> EN
+              <i class="fa fa-flag"></i> <%= t("layouts.header.english") %>
             <% end %>
           </li>
-          <li class="<%= I18n.locale == :vi ? 'active' : '' %>">
+          <li class="<%= I18n.locale == :vi ? "active" : "" %>">
             <%= link_to locale: "vi" do %>
-              <i class="fa fa-flag"></i> VI
+              <i class="fa fa-flag"></i> <%= t("layouts.header.vietnamese") %>
             <% end %>
           </li>
         </ul>
