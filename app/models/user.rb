@@ -18,9 +18,12 @@ gender).freeze
   validates :email, presence: true, length: {maximum: PASSWORD_MAXIMUM_LENGTH},
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
+<<<<<<< HEAD
   validates :password, presence: true, length:
             {minimum: Settings.digits.digit_6},
             allow_nil: true
+=======
+>>>>>>> d54b6aa (Chapter 9)
   validates :dob, presence: true
 
   validate :dob_valid
@@ -46,9 +49,13 @@ gender).freeze
   end
 
   def authenticated? remember_token
+<<<<<<< HEAD
     return false if remember_digest.nil?
 
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
+=======
+    BCrypt::Password.new(remember_digest).is_password? remember_token
+>>>>>>> d54b6aa (Chapter 9)
   end
 
   def forget

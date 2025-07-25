@@ -5,6 +5,7 @@ module SessionsHelper
 
   def current_user
     if (user_id = session[:user_id])
+<<<<<<< HEAD
       @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
       @current_user = user_from_remember_token(user_id)
@@ -23,6 +24,18 @@ module SessionsHelper
     user
   end
 
+=======
+      @current_user ||= User.find_by id: user_id
+    elsif (user_id = cookies.signed[:user_id])
+      user = User.find_by id: user_id
+      if user&.authenticated?(cookies[:remember_token])
+        log_in user
+        @current_user = user
+      end
+    end
+  end
+
+>>>>>>> d54b6aa (Chapter 9)
   def forget user
     user.forget
     cookies.delete(:user_id)
