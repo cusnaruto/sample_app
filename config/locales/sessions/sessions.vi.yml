@@ -5,6 +5,7 @@ vi:
       email: "Email"
       password: "Mật khẩu"
       sign_up: "Đăng ký"
+      remember: "Ghi nhớ tôi"
     show:
       account_created: "Tạo tài khoản thành công"
       email: "Email"

@@ -5,6 +5,7 @@ en:
       email: "Email"
       password: "Password"
       sign_up: "Sign up"
+      remember: "Remember me"
     show:
       account_created: "Account successfully created!"
       email: "Email"
