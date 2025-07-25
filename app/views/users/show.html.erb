@@ -1,9 +1,35 @@
-<div class="welcome-container">
-  <h1><%= t(".welcome", name: @user.name) %></h1>
-  <p><%= t(".account_created") %></p>
+<% provide :title, @user.name %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user-info">
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </section>
 
-  <div class="user-details">
-    <p><strong><%= t(".email") %>:</strong> <%= @user.email %></p>
-    <p><strong><%= t(".dob") %>:</strong> <%= @user.dob&.strftime(Settings.time.formats.date_of_birth) %></p>
-  </div>
+    <section class="user-details">
+      <p><strong><%= t(".email") %>:</strong> <%= @user.email %></p>
+      <% if @user.dob.present? %>
+        <p><strong><%= t(".date_of_birth") %>:</strong> <%= l(@user.dob, format: :long) %></p>
+      <% end %>
+      <% if @user.gender.present? %>
+        <p><strong><%= t(".gender") %>:</strong> <%= t("users.new.genders.#{@user.gender}") %></p>
+      <% end %>
+
+      <div class="timestamp-info">
+        <p class="timestamp"><strong><%= t(".account_created") %>: </strong> <%= l(@user.created_at, format: :long) %></p>
+        <p class="timestamp"><strong><%= t(".last_updated") %>: </strong> <%= l(@user.updated_at, format: :long) %></p>
+      </div>
+    </section>
+  </aside>
+    <li class="<%= I18n.locale == :en ? "active" : "" %>">
+      <%= link_to locale: :en do %>
+        <i class="fa fa-flag"></i> EN
+      <% end %>
+    </li>
+    <li class="<%= I18n.locale == :vi ? "active" : "" %>">
+      <%= link_to locale: :vi do %>
+        <i class="fa fa-flag"></i> VI
+      <% end %>
+    </li>
 </div>

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  USER_PERMITTED_PARAMS = [:name, :email, :dob, :password,
-:password_confirmation].freeze
+  USER_PERMIT = %i(name email dob gender password password_confirmation).freeze
 
   before_action :load_user, only: :show
 
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
       flash[:success] = t(".welcome")
       redirect_to @user
     else
-      render "new"
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -31,6 +30,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(*USER_PERMITTED_PARAMS)
+    params.require(:user).permit(*USER_PERMIT)
   end
 end
