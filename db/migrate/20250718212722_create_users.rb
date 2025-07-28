@@ -5,6 +5,11 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string  :email, null: false, index: { unique: true }
       t.string  :password_digest, null: false
       t.integer :gender, default: 0, null: false
+<<<<<<< HEAD
+=======
+      t.date    :dob
+      t.boolean :admin, default: false
+>>>>>>> b6ba749 (Chapter 10)
 
       t.timestamps
     end

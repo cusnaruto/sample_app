@@ -16,4 +16,12 @@
       <% end %>
     </section>
   </aside>
+<<<<<<< HEAD
+=======
+  <div class="col-md-8">
+    <% if current_user?(@user) || current_user.admin? %>
+      <%= render "form" %>
+    <% end %>
+  </div>
+>>>>>>> b6ba749 (Chapter 10)
 </div>

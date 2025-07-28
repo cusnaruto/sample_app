@@ -47,10 +47,14 @@ gem "bootsnap", require: false
 
 gem "bootstrap-sass", "~> 3.4.1"
 gem "config"
+gem "faker", "~> 2.21"
 gem "jquery-rails"
 gem "pagy"
+<<<<<<< HEAD
 gem "rails-i18n"
 gem "sassc-rails", ">= 2.1.0"
+=======
+>>>>>>> b6ba749 (Chapter 10)
 gem "rails-i18n"
 
 group :development, :test do

@@ -8,7 +8,10 @@ class UsersController < ApplicationController
 
   def show; end
 
+<<<<<<< HEAD
   # GET: /users/new
+=======
+>>>>>>> b6ba749 (Chapter 10)
   def create
     @user = User.new(user_params)
     if @user.save
@@ -21,7 +24,10 @@ class UsersController < ApplicationController
 
   def edit; end
 
+<<<<<<< HEAD
   # PATCH/PUT: /users/:id
+=======
+>>>>>>> b6ba749 (Chapter 10)
   def update
     if @user.update user_params
       flash[:success] = t("users.update.success")
@@ -31,12 +37,19 @@ class UsersController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   # GET: /users
   def index
     @pagy, @users = pagy User.newest_first, items: Settings.page_10
   end
 
   # DELETE: /users/:id
+=======
+  def index
+    @pagy, @users = pagy User.all, items: Settings.page_10
+  end
+
+>>>>>>> b6ba749 (Chapter 10)
   def destroy
     if @user.destroy
       flash[:success] = t("users.destroy.success")
@@ -52,9 +65,13 @@ class UsersController < ApplicationController
   end
 
   def admin_user
+<<<<<<< HEAD
     return if current_user.admin?
 
     redirect_to root_path
+=======
+    redirect_to(root_path) unless current_user.admin?
+>>>>>>> b6ba749 (Chapter 10)
   end
 
   def load_user

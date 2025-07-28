@@ -4,16 +4,21 @@ module SessionsHelper
   end
 
   def current_user
+<<<<<<< HEAD
     if (user_id = session[:user_id])
 <<<<<<< HEAD
       @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
       @current_user = user_from_remember_token(user_id)
     end
+=======
+    @current_user ||= User.find_by(id: session[:user_id])
+>>>>>>> b6ba749 (Chapter 10)
   end
 
   def current_user? user
     user == current_user
+<<<<<<< HEAD
   end
 
   def user_from_remember_token user_id
@@ -33,6 +38,8 @@ module SessionsHelper
         @current_user = user
       end
     end
+=======
+>>>>>>> b6ba749 (Chapter 10)
   end
 
 >>>>>>> d54b6aa (Chapter 9)

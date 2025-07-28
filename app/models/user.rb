@@ -10,7 +10,10 @@ class User < ApplicationRecord
 
   USER_PERMIT_PARAMS = %i(name email password password_confirmation dob
 gender).freeze
+<<<<<<< HEAD
 
+=======
+>>>>>>> b6ba749 (Chapter 10)
   enum gender: {male: 0, female: 1, other: 2}
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -19,11 +22,17 @@ gender).freeze
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
 <<<<<<< HEAD
+<<<<<<< HEAD
   validates :password, presence: true, length:
             {minimum: Settings.digits.digit_6},
             allow_nil: true
 =======
 >>>>>>> d54b6aa (Chapter 9)
+=======
+  validates :password, presence: true, length:
+            {minimum: Settings.digits.digit_6},
+            allow_nil: true
+>>>>>>> b6ba749 (Chapter 10)
   validates :dob, presence: true
 
   validate :dob_valid
