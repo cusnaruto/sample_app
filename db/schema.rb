@@ -18,13 +18,14 @@ ActiveRecord::Schema[7.0].define(version: 2025_07_25_033021) do
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.integer "gender", default: 0, null: false
     t.date "dob"
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.string "gender"
     t.string "remember_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end

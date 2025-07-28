@@ -7,3 +7,8 @@ i18n:
   available_locales:
     - :en
     - :vi
+
+digits:
+  digit_6: 6
+
+page_10: 10

@@ -6,19 +6,12 @@
         <%= @user.name %>
       </h1>
     </section>
+
     <section class="user-details">
       <p><strong><%= t(".email") %>:</strong> <%= @user.email %></p>
       <% if @user.dob.present? %>
         <p><strong><%= t(".date_of_birth") %>:</strong> <%= l(@user.dob, format: :long) %></p>
       <% end %>
-      <% if @user.gender.present? %>
-        <p><strong><%= t(".gender") %>:</strong> <%= t("users.genders.#{@user.gender}") %></p>
-      <% end %>
     </section>
   </aside>
-  <div class="col-md-8">
-    <% if current_user?(@user) || current_user.admin? %>
-      <%= render "form" %>
-    <% end %>
-  </div>
 </div>

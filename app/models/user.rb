@@ -6,11 +6,18 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  USER_PERMIT_PARAMS = %i(name email password password_confirmation dob
+gender).freeze
+  enum gender: {male: 0, female: 1, other: 2}
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, presence: true
   validates :email, presence: true, length: {maximum: PASSWORD_MAXIMUM_LENGTH},
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
+  validates :password, presence: true, length:
+            {minimum: Settings.digits.digit_6},
+            allow_nil: true
   validates :dob, presence: true
 
   validate :dob_valid

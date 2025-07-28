@@ -7,14 +7,41 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params.dig(:session, :email)&.downcase)
-    if user.try(:authenticate, params.dig(:session, :password))
-      log_in user
-      params.dig(:session, :remember_me) == "1" ? remember(user) : forget(user)
-      redirect_to session_path(user), status: :see_other
+    user = find_user_by_email
+    if user&.authenticate(session_password)
+      handle_successful_login(user)
     else
-      flash.now[:danger] = t("sessions.create.invalid_email_or_password")
-      render :new, status: :unprocessable_entity
+      handle_failed_login
     end
+  end
+
+  private
+
+  def find_user_by_email
+    User.find_by(email: params.dig(:session, :email)&.downcase)
+  end
+
+  def session_password
+    params.dig(:session, :password)
+  end
+
+  def handle_successful_login user
+    forwarding_url = session[:forwarding_url]
+    log_in user
+    handle_remember_me(user)
+    redirect_to forwarding_url || user
+  end
+
+  def handle_remember_me user
+    if params.dig(:session, :remember_me) == "1"
+      remember(user)
+    else
+      forget(user)
+    end
+  end
+
+  def handle_failed_login
+    flash.now[:danger] = t("sessions.create.invalid_email_or_password")
+    render :new, status: :unprocessable_entity
   end
 end

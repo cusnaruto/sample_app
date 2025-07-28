@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
     resources :microposts, only: [:index]
     resources :sessions, only: [:show]
-    resources :users
+    resources :users, only: %i(index show destroy edit update)
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
