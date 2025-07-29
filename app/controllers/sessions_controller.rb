@@ -10,16 +10,7 @@ class SessionsController < ApplicationController
   def create
     user = find_user_by_email
     if user&.authenticate(session_password)
-<<<<<<< HEAD
-      if user.activated?
-        handle_successful_login(user)
-      else
-        flash[:warning] = t("sessions.create.account_not_activated")
-        redirect_to root_url, status: :see_other
-      end
-=======
       handle_successful_login(user)
->>>>>>> b6ba749 (Chapter 10)
     else
       handle_failed_login
     end
@@ -43,11 +34,7 @@ class SessionsController < ApplicationController
   end
 
   def handle_remember_me user
-<<<<<<< HEAD
-    if params.dig(:session, :remember_me) == REMEMBER_ME
-=======
     if params.dig(:session, :remember_me) == "1"
->>>>>>> b6ba749 (Chapter 10)
       remember(user)
     else
       forget(user)

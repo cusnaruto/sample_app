@@ -288,11 +288,8 @@ DEPENDENCIES
   capybara
   config
   debug
-<<<<<<< HEAD
   erb_lint
-=======
   faker (~> 2.21)
->>>>>>> b6ba749 (Chapter 10)
   importmap-rails
   jbuilder
   jquery-rails

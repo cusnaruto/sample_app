@@ -1,85 +1,53 @@
-class User < ApplicationRecord
-  PASSWORD_MAXIMUM_LENGTH = 255
-  AGE_MAXIMUM = 100.years
+module SessionsHelper
+  def log_in user
+    session[:user_id] = user.id
+  end
 
-  attr_accessor :remember_token
+  def current_user
+    if (user_id = session[:user_id])
+      @current_user ||= User.find_by(id: user_id)
+    elsif (user_id = cookies.signed[:user_id])
+      user = User.find_by(id: user_id)
 
-  scope :newest_first, -> { order(created_at: :desc) }
-
-  has_secure_password
-
-  USER_PERMIT_PARAMS = %i(name email password password_confirmation dob
-gender).freeze
-<<<<<<< HEAD
-
-=======
->>>>>>> b6ba749 (Chapter 10)
-  enum gender: {male: 0, female: 1, other: 2}
-
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :name, presence: true
-  validates :email, presence: true, length: {maximum: PASSWORD_MAXIMUM_LENGTH},
-            format: {with: VALID_EMAIL_REGEX},
-            uniqueness: {case_sensitive: false}
-<<<<<<< HEAD
-<<<<<<< HEAD
-  validates :password, presence: true, length:
-            {minimum: Settings.digits.digit_6},
-            allow_nil: true
-=======
->>>>>>> d54b6aa (Chapter 9)
-=======
-  validates :password, presence: true, length:
-            {minimum: Settings.digits.digit_6},
-            allow_nil: true
->>>>>>> b6ba749 (Chapter 10)
-  validates :dob, presence: true
-
-  validate :dob_valid
-
-  class << self
-    def digest string
-      cost = if ActiveModel::SecurePassword.min_cost
-               BCrypt::Engine::MIN_COST
-             else
-               BCrypt::Engine.cost
-             end
-      BCrypt::Password.create(string, cost:)
-    end
-
-    def new_token
-      SecureRandom.urlsafe_base64
+      if user&.authenticated?(:remember, cookies[:remember_token])
+        log_in user
+        @current_user = user
+      end
     end
   end
 
-  def remember
-    self.remember_token = User.new_token
-    update_column(:remember_digest, User.digest(remember_token))
+  def current_user? user
+    user == current_user
   end
 
-  def authenticated? remember_token
-<<<<<<< HEAD
-    return false if remember_digest.nil?
-
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
-=======
-    BCrypt::Password.new(remember_digest).is_password? remember_token
->>>>>>> d54b6aa (Chapter 9)
+  def forget user
+    user.forget
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
   end
 
-  def forget
-    update_column(:remember_digest, nil)
+  def logged_in?
+    current_user.present?
   end
 
-  private
+  def log_out
+    forget current_user
+    reset_session
+    @current_user = nil
+  end
 
-  def dob_valid
-    return if dob.blank?
+  def destroy
+    log_out
+    redirect_to root_url, status: :see_other
+  end
 
-    if dob > Time.zone.today
-      errors.add(:dob, :future_date)
-    elsif dob < AGE_MAXIMUM.ago.to_date
-      errors.add(:dob, :too_old)
-    end
+  def remember user
+    user.remember
+    cookies.permanent.signed[:user_id] = user.id
+    cookies.permanent[:remember_token] = user.remember_token
+  end
+
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 end

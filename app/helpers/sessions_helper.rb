@@ -1,76 +1,53 @@
-module SessionsHelper
-  def log_in user
-    session[:user_id] = user.id
+class SessionsController < ApplicationController
+  REMEMBER_ME = "1".freeze
+  def show
+    @user = User.find_by(id: params[:id])
+    return if @user
+
+    redirect_to root_path, alert: t("sessions.show.user_not_found")
   end
 
-  def current_user
-<<<<<<< HEAD
-    if (user_id = session[:user_id])
-<<<<<<< HEAD
-      @current_user ||= User.find_by(id: user_id)
-    elsif (user_id = cookies.signed[:user_id])
-      @current_user = user_from_remember_token(user_id)
-    end
-=======
-    @current_user ||= User.find_by(id: session[:user_id])
->>>>>>> b6ba749 (Chapter 10)
-  end
-
-  def current_user? user
-    user == current_user
-<<<<<<< HEAD
-  end
-
-  def user_from_remember_token user_id
-    user = User.find_by id: user_id
-    return unless user&.authenticated?(cookies[:remember_token])
-
-    log_in user
-    user
-  end
-
-=======
-      @current_user ||= User.find_by id: user_id
-    elsif (user_id = cookies.signed[:user_id])
-      user = User.find_by id: user_id
-      if user&.authenticated?(cookies[:remember_token])
-        log_in user
-        @current_user = user
+  def create
+    user = find_user_by_email
+    if user&.authenticate(session_password)
+      if user.activated?
+        handle_successful_login(user)
+      else
+        flash[:warning] = t("sessions.create.account_not_activated")
+        redirect_to root_url, status: :see_other
       end
+    else
+      handle_failed_login
     end
-=======
->>>>>>> b6ba749 (Chapter 10)
   end
 
->>>>>>> d54b6aa (Chapter 9)
-  def forget user
-    user.forget
-    cookies.delete(:user_id)
-    cookies.delete(:remember_token)
+  private
+
+  def find_user_by_email
+    User.find_by(email: params.dig(:session, :email)&.downcase)
   end
 
-  def logged_in?
-    current_user.present?
+  def session_password
+    params.dig(:session, :password)
   end
 
-  def log_out
-    forget current_user
-    reset_session
-    @current_user = nil
+  def handle_successful_login user
+    forwarding_url = session[:forwarding_url]
+    log_in user
+    handle_remember_me(user)
+    redirect_to forwarding_url || user
   end
 
-  def destroy
-    log_out
-    redirect_to root_url, status: :see_other
+  def handle_remember_me user
+    if params.dig(:session, :remember_me) == REMEMBER_ME
+      remember(user)
+    else
+      forget(user)
+    end
   end
 
-  def remember user
-    user.remember
-    cookies.permanent.signed[:user_id] = user.id
-    cookies.permanent[:remember_token] = user.remember_token
-  end
-
-  def store_location
-    session[:forwarding_url] = request.original_url if request.get?
+  def handle_failed_login
+    flash.now[:danger] = t("sessions.create.invalid_email_or_password")
+    render :new, status: :unprocessable_entity
   end
 end

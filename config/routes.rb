@@ -5,13 +5,15 @@ Rails.application.routes.draw do
     get "static_pages/contact"
     get "/login", to: "sessions#new"
     get "contact", to: "static_pages#contact"
+    get "signup", to: "users#new"
 
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
 
     resources :microposts, only: [:index]
     resources :sessions, only: [:show]
-    resources :users, only: %i(index show destroy edit update)
+    resources :users
+    resources :account_activations, only: :edit
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

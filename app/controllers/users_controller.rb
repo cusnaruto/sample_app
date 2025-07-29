@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def show; end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   # GET: /users/new
 =======
 >>>>>>> b6ba749 (Chapter 10)
@@ -19,6 +20,28 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render :new, status: :unprocessable_entity
+=======
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    respond_to do |format|
+      if @user.save
+        @user.send_activation_email
+
+        format.html do
+          redirect_to user_url(@user),
+                      notice: "User was successfully created."
+        end
+        format.json{render :show, status: :created, location: @user}
+      else
+        format.html{render :new, status: :unprocessable_entity}
+        format.json{render json: @user.errors, status: :unprocessable_entity}
+      end
+>>>>>>> 1a5481a (Chapter 11)
     end
   end
 
