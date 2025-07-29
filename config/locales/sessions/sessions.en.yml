@@ -1,0 +1,12 @@
+en:
+  sessions:
+    new:
+      log_in: "Log in"
+      email: "Email"
+      password: "Password"
+      sign_up: "Sign up"
+    show:
+      account_created: "Account successfully created!"
+      email: "Email"
+    create:
+      invalid_email_or_password: "Email hoặc mật khẩu không đúng."

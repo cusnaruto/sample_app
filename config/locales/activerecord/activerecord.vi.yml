@@ -19,4 +19,4 @@ vi:
             dob:
               blank: "không được để trống"
               future_date: "không thể để ở tương lai"
-              too_old: "người dùng không thể vượt quá 100 tuổi"
+              too_old: "người dùng không thể vượt quá 100 tuổi!"
