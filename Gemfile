@@ -54,6 +54,7 @@ gem "faker", "~> 2.21"
 gem "jquery-rails"
 gem "pagy"
 gem "rails-i18n"
+gem "figaro"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html

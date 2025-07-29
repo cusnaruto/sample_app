@@ -17,7 +17,7 @@ vi:
       password_placeholder: "Nhập mật khẩu"
       password_confirmation: "Xác nhận mật khẩu"
       password_confirmation_placeholder: "Xác nhận mật khẩu của bạn"
-      submit: "Cập nhật hồ sơ"
+      submit: "Gửi"
     edit:
       title: "Chỉnh sửa hồ sơ"
       cancel: "Hủy"

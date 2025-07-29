@@ -2,7 +2,9 @@ class User < ApplicationRecord
   PASSWORD_MAXIMUM_LENGTH = 255
   AGE_MAXIMUM = 100.years
 
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
+  before_save :downcase_email
+  before_create :create_activation_digest
 
   has_secure_password
 
@@ -50,6 +52,21 @@ gender).freeze
     update_column(:remember_digest, nil)
   end
 
+  def activate
+    update_columns activated: true, activated_at: Time.zone.now
+  end
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+  def authenticated? attribute, token
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+
+    BCrypt::Password.new(digest).is_password? token
+  end
+
   private
 
   def dob_valid
@@ -60,5 +77,14 @@ gender).freeze
     elsif dob < AGE_MAXIMUM.ago.to_date
       errors.add(:dob, :too_old)
     end
+  end
+
+  def downcase_email
+    email.downcase!
+  end
+
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
   end
 end

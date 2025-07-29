@@ -9,7 +9,16 @@ class SessionsController < ApplicationController
   def create
     user = find_user_by_email
     if user&.authenticate(session_password)
-      handle_successful_login(user)
+      if user.activated?
+        forwarding_url = session[:forwarding_url]
+        reset_session
+        params[:session][:remember_me] = "1" ? remember(user) : forget(user)
+        log_in(user)
+        redirect_to forwarding_url || user
+      else
+        flash[:warning] = t("sessions.create.account_not_activated")
+        redirect_to root_url, status: :see_other
+      end
     else
       handle_failed_login
     end
