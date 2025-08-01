@@ -10,4 +10,5 @@ class Micropost < ApplicationRecord
                     size: { less_than: Settings.micropost.image_max_size,
                             message: I18n.t("microposts.image.too_large") }
   scope :recent_posts, -> {order created_at: :desc}
+  scope :relate_post, ->(user_ids) { where user_id: user_ids }
 end

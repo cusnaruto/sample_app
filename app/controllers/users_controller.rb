@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   include Pagy::Backend
 
-  before_action :load_user, only: %i(show edit update destroy)
-  before_action :logged_in_user, only: %i(show edit update destroy)
+  before_action :load_user, except: %i(index new create)
+  before_action :logged_in_user, except: %i(new create show)
   before_action :correct_user, only: %i(show edit update)
   before_action :admin_user, only: :destroy
 

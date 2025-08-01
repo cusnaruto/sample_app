@@ -51,7 +51,7 @@
               <%= t(".recent_posts") %> <span class="badge bg-secondary"><%= user_microposts_count(@user) %></span>
             </h2>
           </div>
-
+          <%= render "follow_form" if logged_in? %>
           <section class="microposts">
             <% if @microposts.any? %>
               <div class="microposts-list">
