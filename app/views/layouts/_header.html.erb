@@ -14,12 +14,9 @@
           <li><%= link_to t("layouts.header.home"), root_path %></li>
           <li><%= link_to t("layouts.header.contact"), contact_path %></li>
           <% if logged_in? %>
-            <li><%= link_to t("layouts.header.users"), "#" %></li>
+            <li><%= link_to t("layouts.header.users"), user_path(current_user) %></li>
             <li>
-              <%= link_to t("layouts.header.profile"), session_path(current_user) %>
-            </li>
-            <li>
-              <%= link_to t("layouts.header.settings"), "#" %>
+              <%= link_to t("layouts.header.settings"), edit_user_path(current_user) %>
             </li>
             <li>
               <%= button_to t("layouts.header.logout"), logout_path, method: :delete, class: "btn btn-link navbar-btn" %>

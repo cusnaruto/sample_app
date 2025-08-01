@@ -48,6 +48,7 @@ gem "bootsnap", require: false
 gem "bootstrap-sass", "~> 3.4.1"
 gem "config"
 gem "jquery-rails"
+gem "pagy"
 gem "rails-i18n"
 gem "sassc-rails", ">= 2.1.0"
 

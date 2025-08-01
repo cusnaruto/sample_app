@@ -1,21 +1,27 @@
 en:
   users:
-    new:
-      signup_title: "Sign Up"
-      create_account: "Create Account"
-      select_gender: "Select Gender"
-      errors_prohibited: "%{count} prohibited this user from being saved:"
-      error_explanation: "Error"
-      genders:
-        male: "Male"
-        female: "Female"
-        other: "Other"
+    genders:
+      male: "Male"
+      female: "Female"
+      other: "Other"
+    form:
+      name: "Name"
+      name_placeholder: "Enter your name"
+      email: "Email"
+      email_placeholder: "Enter your email"
+      date_of_birth: "Date of Birth"
+      select_date: "Select date"
+      gender: "Gender"
+      select_gender: "Select gender"
+      password: "Password"
+      password_placeholder: "Enter password"
+      password_confirmation: "Confirm Password"
+      password_confirmation_placeholder: "Confirm your password"
+      submit: "Update Profile"
+    edit:
+      title: "Edit Profile"
+      cancel: "Cancel"
+  sessions:
     show:
       email: "Email"
       date_of_birth: "Date of Birth"
-      gender: "Gender"
-      account_created: "Account created"
-      last_updated: "Last updated"
-      user_not_found: "User not found"
-    create:
-      welcome: "Welcome to the Sample App!"
