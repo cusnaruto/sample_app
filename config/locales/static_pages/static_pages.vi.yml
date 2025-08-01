@@ -1,0 +1,10 @@
+vi:
+  static_pages:
+    home:
+      title: "Trang chủ"
+      welcome_to_sample_app: "Chào mừng đến với Sample App"
+      description: "Đây là trang chủ của ứng dụng mẫu Ruby on Rails Tutorial."
+      sign_up_now: "Đăng ký ngay!"
+      user_info: "Thông tin người dùng"
+      compose_micropost: "Viết bài đăng mới"
+      feed: "Bảng tin"

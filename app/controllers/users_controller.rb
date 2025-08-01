@@ -6,7 +6,10 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i(show edit update)
   before_action :admin_user, only: :destroy
 
-  def show; end
+  def show
+    @user = User.find(params[:id])
+    @page, @microposts = pagy(@user.microposts.recent_posts, items: Settings.pagy.limit)
+  end
 
   def new
     @user = User.new

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
+  include Pagy::Backend
 
   # Set the locale based on the URL parameter or default to I18n.default_locale
   before_action :set_locale

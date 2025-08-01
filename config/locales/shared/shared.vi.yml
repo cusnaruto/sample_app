@@ -1,0 +1,13 @@
+vi:
+  shared:
+    micropost_form:
+      placeholder: "Viết bài đăng mới..."
+      submit: "Đăng"
+    user_info:
+      profile: "xem hồ sơ của tôi"
+      title: "bài đăng"
+    feed:
+      title: "Bảng tin"
+      no_posts: "Chưa có bài đăng nào"
+    error_messages:
+      count: "lỗi"

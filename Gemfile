@@ -56,6 +56,8 @@ gem "pagy"
 gem "rails-i18n"
 gem "figaro"
 gem 'dotenv-rails', groups: [:development, :test]
+gem "image_processing", "~> 1.12.2"
+gem "active_storage_validations", "~> 0.9.8"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html

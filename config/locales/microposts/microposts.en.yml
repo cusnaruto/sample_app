@@ -1,0 +1,11 @@
+en:
+  microposts:
+    create:
+      success: "Micropost created!"
+    destroy:
+      success: "Micropost deleted"
+      failure: "Unable to delete micropost"
+    not_found: "Micropost not found"
+    image:
+      invalid_type: "Invalid image format"
+      too_large: "Image file size must be less than 5MB"

@@ -6,6 +6,10 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
 
+  def user_microposts_count(user)
+    user.microposts.count
+  end
+
   def gender_options_for_select
     User.genders.map do |key, _value|
       [t("users.form.gender.#{key}"), key]

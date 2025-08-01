@@ -1,0 +1,10 @@
+en:
+  static_pages:
+    home:
+      title: "Home"
+      welcome_to_sample_app: "Welcome to the Sample App"
+      description: "This is the home page for the Ruby on Rails Tutorial sample application."
+      sign_up_now: "Sign up now!"
+      user_info: "User Info"
+      compose_micropost: "Compose new micropost"
+      feed: "Micropost Feed"

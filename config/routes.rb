@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
-    root "microposts#index"
+    root "static_pages#home"
 
     get "static_pages/contact"
     get "/login", to: "sessions#new"
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
 
-    resources :microposts, only: [:index]
+    resources :microposts, only: %i(index create destroy)
     resources :sessions, only: [:show]
     resources :users
     resources :account_activations, only: :edit

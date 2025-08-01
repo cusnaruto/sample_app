@@ -12,3 +12,12 @@ digits:
   digit_6: 6
 
 page_10: 10
+
+micropost:
+  content_max_length: 140
+  image_max_size: 5
+
+pagy:
+  limit: 10
+  items: 10
+  show_check_count: 10

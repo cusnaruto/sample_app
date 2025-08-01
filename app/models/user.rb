@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
+
   PASSWORD_MAXIMUM_LENGTH = 255
   AGE_MAXIMUM = 100.years
 
@@ -38,6 +40,10 @@ gender).freeze
     def new_token
       SecureRandom.urlsafe_base64
     end
+  end
+
+  def feed
+    microposts
   end
 
   def remember
