@@ -17,10 +17,13 @@ en:
       password_placeholder: "Enter password"
       password_confirmation: "Confirm Password"
       password_confirmation_placeholder: "Confirm your password"
-      submit: "Update Profile"
+      submit: "Gửi"
     edit:
       title: "Edit Profile"
       cancel: "Cancel"
+    new:
+      title: "Sign Up"
+      submit: "Create Account"
   sessions:
     show:
       email: "Email"
