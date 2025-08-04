@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  REMEMBER_ME = "1"
+  REMEMBER_ME = "1".freeze
 
   before_action :load_user, only: :show
   before_action :find_and_authenticate_user, only: :create
@@ -56,13 +56,5 @@ class SessionsController < ApplicationController
 
   def handle_remember_me
     session_password == REMEMBER_ME ? remember(@user) : forget(@user)
-  end
-
-  def session_email
-    params.dig(:session, :email)&.downcase
-  end
-
-  def session_password
-    params.dig(:session, :password)
   end
 end

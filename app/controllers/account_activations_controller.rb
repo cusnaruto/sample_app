@@ -14,11 +14,7 @@ class AccountActivationsController < ApplicationController
   private
 
   def load_user
-    @user = User.find_by(email: params[:email])
-  end
-
-  def check_user_exists
-    return if @user
+    return if @user = User.find_by(email: params[:email])
 
     flash[:danger] = t("account_activations.edit.user_not_found")
     redirect_to root_url

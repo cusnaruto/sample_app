@@ -1,5 +1,8 @@
 en:
   users:
+    new:
+      title: "Sign up"
+      submit: "Create my account"
     genders:
       male: "Male"
       female: "Female"
@@ -17,7 +20,7 @@ en:
       password_placeholder: "Enter password"
       password_confirmation: "Confirm Password"
       password_confirmation_placeholder: "Confirm your password"
-      submit: "Gửi"
+      submit: "Submit"
     edit:
       title: "Edit Profile"
       cancel: "Cancel"
