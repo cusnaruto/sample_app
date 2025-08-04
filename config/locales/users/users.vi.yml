@@ -17,10 +17,13 @@ vi:
       password_placeholder: "Nhập mật khẩu"
       password_confirmation: "Xác nhận mật khẩu"
       password_confirmation_placeholder: "Xác nhận mật khẩu của bạn"
-      submit: "Cập nhật hồ sơ"
+      submit: "Gửi"
     edit:
       title: "Chỉnh sửa hồ sơ"
       cancel: "Hủy"
+    new:
+      title: "Đăng ký"
+      submit: "Tạo tài khoản"
     update:
       success: "Hồ sơ đã được cập nhật thành công"
     not_found: "Không tìm thấy người dùng"

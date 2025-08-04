@@ -1,6 +1,7 @@
 app_name: "Rails Tutorial App"
 admin_email: "hoangvip3333@gmail.com"
 default_locale: "en"
+name: "Sample App"
 
 i18n:
   default_locale: :en
@@ -12,3 +13,6 @@ digits:
   digit_6: 6
 
 page_10: 10
+
+email:
+  from_address: "noreply@example.com"

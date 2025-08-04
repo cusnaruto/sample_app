@@ -1,14 +1,18 @@
 class SessionsController < ApplicationController
+  REMEMBER_ME = "1"
+
   before_action :load_user, only: :show
-  before_action :authenticate_user, only: :create
+  before_action :find_and_authenticate_user, only: :create
 
   def show; end
 
   # POST: /login
   def create
-    reset_session
-    log_in @user
-    redirect_to session_path(@user), status: :see_other
+    if user_activated?
+      handle_successful_login
+    else
+      handle_unactivated_account
+    end
   end
 
   # DELETE: /logout
@@ -27,11 +31,38 @@ class SessionsController < ApplicationController
     redirect_to root_path, alert: t("sessions.show.user_not_found")
   end
 
-  def authenticate_user
-    @user = User.find_by(email: params.dig(:session, :email)&.downcase)
-    return if @user&.authenticate params.dig(:session, :password)
+  def find_and_authenticate_user
+    @user = User.find_by(email: session_email)
+    return if @user&.authenticate(session_password)
 
     flash.now[:danger] = t("sessions.create.invalid_email_or_password")
     render :new, status: :unprocessable_entity
+  end
+
+  def user_activated?
+    @user.activated?
+  end
+
+  def handle_successful_login
+    log_in @user
+    handle_remember_me
+    redirect_back_or @user
+  end
+
+  def handle_unactivated_account
+    flash[:warning] = t("sessions.create.account_not_activated")
+    redirect_to root_url
+  end
+
+  def handle_remember_me
+    session_password == REMEMBER_ME ? remember(@user) : forget(@user)
+  end
+
+  def session_email
+    params.dig(:session, :email)&.downcase
+  end
+
+  def session_password
+    params.dig(:session, :password)
   end
 end
