@@ -1,6 +1,5 @@
 class PasswordResetsController < ApplicationController
-
-  PASSWORD_RESET_PERMIT_PARAMS = %i[password password_confirmation].freeze
+  PASSWORD_RESET_PERMIT_PARAMS = %i(password password_confirmation).freeze
 
   before_action :load_user_by_email, only: :create
   before_action :load_user, :valid_user, :check_expiration,
@@ -61,11 +60,11 @@ class PasswordResetsController < ApplicationController
 
   def load_user_by_email
     email = params.dig(:password_reset, :email)&.downcase
-    @user = User.find_by(email: email)
-    unless @user
-      flash.now[:danger] = t("password_resets.email_not_found")
-      render :new, status: :unprocessable_entity
-    end
+    @user = User.find_by(email:)
+    return if @user
+
+    flash.now[:danger] = t("password_resets.email_not_found")
+    render :new, status: :unprocessable_entity
   end
 
   def check_empty_password

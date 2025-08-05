@@ -1,5 +1,10 @@
 vi:
   users:
+    show:
+      posts: "Bài viết"
+      recent_posts: "Bài viết gần đây"
+      no_posts_yet: "Chưa có bài viết nào"
+      no_posts_description: "Người dùng này chưa đăng bài viết nào."
     genders:
       male: "Nam"
       female: "Nữ"
@@ -36,3 +41,6 @@ vi:
     show:
       email: "Email"
       date_of_birth:
+  shared:
+    user_info:
+      title: "Tiêu đề"

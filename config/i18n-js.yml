@@ -1,0 +1,8 @@
+translations:
+  - file: 'app/javascript/custom/locales.json'
+    patterns:
+      - "microposts.*"
+      - "shared.*"
+      - "sessions.*"
+      - "users.*"
+      - "password_resets.*"

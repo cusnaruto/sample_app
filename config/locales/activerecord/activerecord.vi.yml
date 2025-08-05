@@ -20,3 +20,8 @@ vi:
               blank: "không được để trống"
               future_date: "không thể để ở tương lai"
               too_old: "người dùng không thể vượt quá 100 tuổi!"
+        micropost:
+          attributes:
+            image:
+              invalid_image_format: "phải là định dạng hình ảnh hợp lệ"
+              image_too_large: "không được vượt quá 5MB"
