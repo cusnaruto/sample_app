@@ -47,7 +47,8 @@ gem "bootsnap", require: false
 
 gem "bootstrap-sass", "~> 3.4.1"
 gem "config"
-gem "faker"
+gem "dotenv-rails", groups: [:development, :test]
+gem "faker", "~> 2.21"
 gem "figaro"
 gem "jquery-rails"
 gem "pagy"

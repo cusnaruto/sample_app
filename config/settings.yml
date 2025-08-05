@@ -16,3 +16,6 @@ page_10: 10
 
 email:
   from_address: "noreply@example.com"
+
+time:
+  password_reset_expired: 2

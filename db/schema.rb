@@ -16,14 +16,11 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_01_184043) do
     t.string "email", null: false
     t.string "password_digest", null: false
     t.integer "gender", default: 0, null: false
-<<<<<<< HEAD
-    t.date "dob"
-    t.boolean "admin", default: false
-=======
->>>>>>> 36d941a (Chapter 11)
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_digest"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.date "dob"
     t.boolean "admin"
     t.string "activation_digest"
