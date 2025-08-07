@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   include Pagy::Backend
 
-  before_action :load_user, only: %i(show edit update destroy)
-  before_action :logged_in_user, only: %i(show edit update destroy)
+  before_action :load_user,
+                only: %i(show edit update destroy following followers)
+  before_action :logged_in_user,
+                only: %i(index edit update destroy following followers)
   before_action :correct_user, only: %i(show edit update)
   before_action :admin_user, only: :destroy
 
@@ -50,6 +52,18 @@ class UsersController < ApplicationController
       flash[:danger] = t("users.destroy.fail")
     end
     redirect_to users_path
+  end
+
+  def following
+    @title = t("users.show_follow.following")
+    @pagy, @users = pagy(@user.following, items: Settings.pagy.items)
+    render "show_follow"
+  end
+
+  def followers
+    @title = t("users.show_follow.followers")
+    @pagy, @users = pagy(@user.followers, items: Settings.pagy.items)
+    render "show_follow"
   end
 
   private

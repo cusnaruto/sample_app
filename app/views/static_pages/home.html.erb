@@ -1,6 +1,7 @@
 <% provide :title, t(".title") %>
 
 <div class="home-container">
+  <!-- Hero Section -->
   <div class="hero-section text-center py-5" style="background-color: #007bff;">
     <div class="container">
       <h1 class="display-4 fw-bold text-white mb-3"><%= t(".welcome_to_sample_app") %></h1>
@@ -12,9 +13,12 @@
   </div>
 
   <% if logged_in? %>
+    <!-- Main Layout -->
     <div class="container mt-4">
       <div class="row">
+        <!-- Sidebar: User Info + Micropost -->
         <div class="col-lg-4">
+          <!-- User Info Card -->
           <div class="card mb-3">
             <div class="card-header bg-primary text-white">
               <strong><%= t(".user_info") %></strong>
@@ -23,7 +27,16 @@
               <%= render "shared/user_info" %>
             </div>
           </div>
-
+          <!-- Stats Card -->
+          <div class="card mb-3">
+            <div class="card-header bg-primary text-white">
+              <strong><%= t(".stats_info") %></strong>
+            </div>
+            <div class="card-body">
+              <%= render "shared/stats" %>
+            </div>
+          </div>
+          <!-- Micropost Form Card -->
           <div class="card">
             <div class="card-header bg-success text-white">
               <strong><%= t(".compose_micropost") %></strong>
@@ -33,6 +46,7 @@
             </div>
           </div>
         </div>
+        <!-- Feed -->
         <div class="col-lg-8">
           <div class="card">
             <div class="card-header bg-info text-white">
