@@ -4,7 +4,7 @@ en:
         posts: "Posts"
         recent_posts: "Recent Posts"
         no_posts_yet: "No posts yet"
-        no_posts_description: "This user hasn't posted anything yet."
+        no_posts_description: "This user hasn"t posted anything yet."
     new:
       title: "Sign up"
       submit: "Create my account"
@@ -35,7 +35,15 @@ en:
   sessions:
     show:
       email: "Email"
-      date_of_birth: "Date of Birth"
+      posts: "Posts"
+      recent_posts: "Recent posts"
+      no_posts_yet: "No posts yet"
+      no_posts_description: "This user hasn"t posted anything yet."
   shared:
     user_info:
       title: "Title"
+  show_follow:
+      view_profile: "view my profile"
+      microposts: "Microposts:"
+      following: "following"
+      followers: "followers"

@@ -26,6 +26,10 @@ micropost:
 
 pagy:
   show_check_count: 1
+  items: 10
 
 form:
   image_type: "image/jpeg,image/gif,image/png"
+
+gravatar:
+  size: 30
