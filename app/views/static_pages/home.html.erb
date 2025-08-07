@@ -1,0 +1,49 @@
+<% provide :title, t(".title") %>
+
+<div class="home-container">
+  <div class="hero-section text-center py-5" style="background-color: #007bff;">
+    <div class="container">
+      <h1 class="display-4 fw-bold text-white mb-3"><%= t(".welcome_to_sample_app") %></h1>
+      <p class="lead text-white mb-4"><%= t(".description") %></p>
+      <% unless logged_in? %>
+        <%= link_to t(".sign_up_now"), signup_path, class: "btn btn-light btn-lg px-5 py-3 rounded-pill" %>
+      <% end %>
+    </div>
+  </div>
+
+  <% if logged_in? %>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-3">
+            <div class="card-header bg-primary text-white">
+              <strong><%= t(".user_info") %></strong>
+            </div>
+            <div class="card-body">
+              <%= render "shared/user_info" %>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header bg-success text-white">
+              <strong><%= t(".compose_micropost") %></strong>
+            </div>
+            <div class="card-body">
+              <%= render "shared/micropost_form" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-header bg-info text-white">
+              <strong><%= t(".feed") %></strong>
+            </div>
+            <div class="card-body">
+              <%= render "shared/feed" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

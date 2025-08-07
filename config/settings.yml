@@ -19,3 +19,13 @@ email:
 
 time:
   password_reset_expired: 2
+
+micropost:
+  content_max_length: 140
+  image_max_size: 5
+
+pagy:
+  show_check_count: 1
+
+form:
+  image_type: "image/jpeg,image/gif,image/png"

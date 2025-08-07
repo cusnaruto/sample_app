@@ -44,4 +44,8 @@ module UsersHelper
                      })
     end
   end
+
+  def user_microposts_count user
+    user.microposts.count
+  end
 end

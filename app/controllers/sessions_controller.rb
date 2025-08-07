@@ -39,6 +39,14 @@ class SessionsController < ApplicationController
     render :new, status: :unprocessable_entity
   end
 
+  def session_email
+    params.dig(:session, :email)&.downcase
+  end
+
+  def session_password
+    params.dig(:session, :password)
+  end
+
   def user_activated?
     @user.activated?
   end
@@ -55,6 +63,11 @@ class SessionsController < ApplicationController
   end
 
   def handle_remember_me
-    session_password == REMEMBER_ME ? remember(@user) : forget(@user)
+    if params.dig(:session,
+                  :remember_me) == REMEMBER_ME
+      remember(@user)
+    else
+      forget(@user)
+    end
   end
 end

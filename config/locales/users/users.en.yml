@@ -1,5 +1,10 @@
 en:
   users:
+    show:
+        posts: "Posts"
+        recent_posts: "Recent Posts"
+        no_posts_yet: "No posts yet"
+        no_posts_description: "This user hasn't posted anything yet."
     new:
       title: "Sign up"
       submit: "Create my account"
@@ -31,3 +36,6 @@ en:
     show:
       email: "Email"
       date_of_birth: "Date of Birth"
+  shared:
+    user_info:
+      title: "Title"

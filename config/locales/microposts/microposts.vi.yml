@@ -1,0 +1,16 @@
+vi:
+  microposts:
+    create:
+      success: "Bài đăng đã được tạo!"
+    destroy:
+      success: "Bài đăng đã được xóa"
+      failure: "Không thể xóa bài đăng"
+    not_found: "Không tìm thấy bài đăng"
+    image:
+      invalid_type: "Định dạng hình ảnh không hợp lệ"
+      too_large: "Kích thước file ảnh phải nhỏ hơn 5MB"
+  shared:
+    micropost_form:
+      placeholder: "Viết bài đăng mới..."
+      image_label: "Thêm ảnh"
+      submit: "Đăng"

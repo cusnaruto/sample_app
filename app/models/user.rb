@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
+
   PASSWORD_MAXIMUM_LENGTH = 255
   AGE_MAXIMUM = 100.years
 
@@ -81,6 +83,10 @@ gender).freeze
 
   def password_reset_expired?
     reset_sent_at < Settings.time.password_reset_expired.hours.ago
+  end
+
+  def feed
+    microposts
   end
 
   private

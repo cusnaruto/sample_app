@@ -20,3 +20,8 @@ en:
               blank: "can't be blank"
               future_date: "can't be in the future"
               too_old: "user cannot be older than 100 years!"
+        micropost:
+          attributes:
+            image:
+              invalid_image_format: "must be a valid image format"
+              image_too_large: "should be less than 5MB"
