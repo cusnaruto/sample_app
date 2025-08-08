@@ -1,5 +1,11 @@
 class User < ApplicationRecord
   has_many :microposts, dependent: :destroy
+  has_many :active_relationships, class_name: Relationship.name,
+            foreign_key: :follower_id, dependent: :destroy
+  has_many :passive_relationships, class_name: Relationship.name,
+            foreign_key: :followed_id, dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   PASSWORD_MAXIMUM_LENGTH = 255
   AGE_MAXIMUM = 100.years
@@ -15,6 +21,7 @@ class User < ApplicationRecord
 
   USER_PERMIT_PARAMS = %i(name email password password_confirmation dob
 gender).freeze
+  MICROPOST_PRELOAD = [:user, {image_attachment: :blob}].freeze
 
   enum gender: {male: 0, female: 1, other: 2}
 
@@ -86,7 +93,19 @@ gender).freeze
   end
 
   def feed
-    microposts
+    Micropost.relate_post(following_ids << id).includes(MICROPOST_PRELOAD)
+  end
+
+  def follow other_user
+    following << other_user
+  end
+
+  def unfollow other_user
+    following.delete(other_user)
+  end
+
+  def following? other_user
+    following.include? other_user
   end
 
   private
