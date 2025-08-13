@@ -9,6 +9,7 @@ class Micropost < ApplicationRecord
   end
 
   scope :recent_posts, ->{order created_at: :desc}
+  scope :relate_post, ->(user_ids){where user_id: user_ids}
 
   validates :content, presence: true,
 length: {maximum: Settings.micropost.content_max_length}

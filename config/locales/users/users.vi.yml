@@ -44,3 +44,8 @@ vi:
   shared:
     user_info:
       title: "Tiêu đề"
+  show_follow:
+      view_profile: "view my profile"
+      microposts: "Microposts:"
+      following: "following"
+      followers: "followers"
